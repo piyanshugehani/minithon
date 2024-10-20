@@ -7,21 +7,24 @@ const GlobeContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `;
+
 const WorldGlobe = () => {
   const globeEl = useRef();
 
   useEffect(() => {
     const globe = globeEl.current;
 
+    // Increase the autoRotateSpeed for faster rotation (2x faster)
     globe.controls().autoRotate = true;
-    globe.controls().autoRotateSpeed = 0.35;
+    globe.controls().autoRotateSpeed = 1.5; // Increased from 0.75 to 1.5
 
     const CLOUDS_IMG_URL =
       "https://raw.githubusercontent.com/turban/webgl-earth/master/examples/earth-clouds.png";
     const CLOUDS_ALT = 0.004;
-    const CLOUDS_ROTATION_SPEED = -0.006;
+
+    // Increase the CLOUDS_ROTATION_SPEED for faster cloud rotation (2x faster)
+    const CLOUDS_ROTATION_SPEED = -0.024; // Increased from -0.012 to -0.024
 
     new THREE.TextureLoader().load(CLOUDS_IMG_URL, (cloudsTexture) => {
       const clouds = new THREE.Mesh(

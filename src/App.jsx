@@ -1,17 +1,17 @@
 // App.jsx
-import { useRef, useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import User from './components/User';
-import ThemeToggle from './components/ThemeToggle';
-import Dashboard from './components/Dashboard';
-import Navbar from './components/Navbar';
-import MapComponent from './components/MapComponent'; // Import the MapComponent
+import { useRef, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import User from "./components/User";
+import ThemeToggle from "./components/ThemeToggle";
+import Dashboard from "./components/Dashboard";
+import Navbar from "./components/Navbar";
+import MapComponent from "./components/MapComponent"; // Import the MapComponent
 
 function App() {
-  const [startLocation, setStartLocation] = useState({ lat: '', lng: '' });
-  const [endLocation, setEndLocation] = useState({ lat: '', lng: '' });
+  const [startLocation, setStartLocation] = useState({ lat: "", lng: "" });
+  const [endLocation, setEndLocation] = useState({ lat: "", lng: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ function App() {
         <Navbar />
         <header className="p-4 flex justify-between items-center">
           <h1 className="text-2xl">Minithon</h1>
-          <div className='flex justify-around'>
+          <div className="flex justify-around">
             <ThemeToggle />
             <User />
           </div>
@@ -34,13 +34,13 @@ function App() {
             <Dashboard />
 
             {/* Add Location Inputs */}
-            <form onSubmit={handleSubmit} className="mb-4">
+            {/* <form onSubmit={handleSubmit} className="mb-4">
               <input
                 type="text"
                 placeholder="Start Location (lat,lng)"
                 value={`${startLocation.lat},${startLocation.lng}`}
                 onChange={(e) => {
-                  const [lat, lng] = e.target.value.split(',').map(Number);
+                  const [lat, lng] = e.target.value.split(",").map(Number);
                   setStartLocation({ lat, lng });
                 }}
                 className="mr-2 border rounded p-1"
@@ -50,18 +50,21 @@ function App() {
                 placeholder="End Location (lat,lng)"
                 value={`${endLocation.lat},${endLocation.lng}`}
                 onChange={(e) => {
-                  const [lat, lng] = e.target.value.split(',').map(Number);
+                  const [lat, lng] = e.target.value.split(",").map(Number);
                   setEndLocation({ lat, lng });
                 }}
                 className="mr-2 border rounded p-1"
               />
-              <button type="submit" className="border rounded p-1 bg-blue-500 text-white">
+              <button
+                type="submit"
+                className="border rounded p-1 bg-blue-500 text-white"
+              >
                 Show Route
               </button>
-            </form>
+            </form> */}
 
             {/* Render the Map */}
-            <MapComponent startLocation={startLocation} endLocation={endLocation} />
+            {/* <MapComponent startLocation={startLocation} endLocation={endLocation} /> */}
           </div>
         </main>
       </div>
