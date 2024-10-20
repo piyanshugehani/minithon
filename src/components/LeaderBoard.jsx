@@ -52,16 +52,16 @@ const Leaderboard = () => {
   <div className="flex space-x-4">
     <button
       className={`${
-        leaderboardType === 'appWide' ? 'bg-white text-white' : 'bg-gray-200 text-gray-700'
-      } px-4 py-2 rounded-l-lg hover:bg-green-600 transition`}
+        leaderboardType === 'appWide' ? 'bg-white text-black' : 'bg-white text-black'
+      } "bg-white text-black border-2 border-green-800 rounded-lg px-4 py-2 rounded-l-lg hover:bg-green-600 transition`}
       onClick={() => handleLeaderboardTypeChange('appWide')}
     >
       App-Wide Leaderboard
     </button>
     <button
       className={`${
-        leaderboardType === 'friends' ? 'bg-white text-white' : 'bg-gray-200 text-gray-700'
-      } px-4 py-2 rounded-r-lg hover:bg-green-600 transition`}
+        leaderboardType === 'friends' ? 'bg-white text-black' : 'bg-white text-black'
+      } "bg-white text-black px-4 py-2 border-2 border-green-800 rounded-lg rounded-r-lg hover:bg-green-600 transition`}
       onClick={() => handleLeaderboardTypeChange('friends')}
     >
       Friends Leaderboard

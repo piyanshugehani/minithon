@@ -6,6 +6,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import Signup from './components/Signup.jsx'
 import { BrowserRouter,Routes, Route, useNavigate, Router } from 'react-router-dom'
 import Signin from './components/Signin.jsx'
+import Leaderboard from './components/LeaderBoard.jsx'
 
 
 // Import your publishable key
@@ -23,6 +24,7 @@ const ClerkWithRoutes = () => {
       <Route path="/" element={<App/>}/>
       <Route path="/signup/" element={<Signup/>}/>
       <Route path="/signin/" element={<Signin/>}/>
+      <Route path="/leaderboard/" element={<Leaderboard/>}/>
     </Routes>
   </ClerkProvider>)
 }
