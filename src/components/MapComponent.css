@@ -1,0 +1,55 @@
+/* MapComponent.css */
+
+.map-container {
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #f9f9f9; /* Light background */
+  }
+  
+  .map-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Dark color for contrast */
+  }
+  
+  .location-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between inputs */
+  }
+  
+  .location-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .get-route-button {
+    padding: 10px;
+    background-color: #28a745; /* Green color for the button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .get-route-button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  .co2-reduction-card {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e3f2fd; /* Light blue background */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  

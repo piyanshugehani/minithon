@@ -12,7 +12,7 @@ import Cal from './components/Cal.jsx'
 import Events from './components/Events.jsx'
 import Communities from './components/Communities.jsx'
 import Doubts from './components/Doubts.jsx';
-
+import Maps from './components/MapComponent.jsx'
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
@@ -34,6 +34,8 @@ const ClerkWithRoutes = () => {
       <Route path='/events/' element={<Events/>}/>
       <Route path="/community/" element={<Communities />} />
         <Route path="/community/:communityId" element={<Doubts />} />
+      <Route path='/maps/' element={<Maps/>}/>
+      
     </Routes>
   </ClerkProvider>)
 }

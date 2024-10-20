@@ -34,11 +34,11 @@ export default function ExpandableCardDemo() {
 
   return (
     <>
-      <div className="flex justify-center gap-4 mb-4">
+      <div className="bg-white flex justify-center gap-4 mb-4 m-4">
         <select
           value={locationFilter}
           onChange={(e) => setLocationFilter(e.target.value)}
-          className="px-4 py-2 border border-gray-300 dark:text-black rounded-md"
+          className="px-4 py-2 border border-gray-300 dark:text-black rounded-md "
         >
           <option value="">All Locations</option>
           <option value="Thane">Thane</option>
@@ -61,7 +61,7 @@ export default function ExpandableCardDemo() {
 
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0 grid place-items-center z-[100]">
+          <div className="fixed inset-0 shadow-lg grid place-items-center z-[100]">
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
@@ -76,7 +76,7 @@ export default function ExpandableCardDemo() {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden shadow-lg"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <img
@@ -110,7 +110,7 @@ export default function ExpandableCardDemo() {
                     layoutId={`button-${active.title}-${id}`}
                     href={active.ctaLink}
                     target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                    className="px-4 py-3 text-sm rounded-full font-bold bg-gradient-to-r from-gray-800 to-gray-900 text-white"
                   >
                     {active.ctaText}
                   </motion.a>
@@ -141,7 +141,7 @@ export default function ExpandableCardDemo() {
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}
             onClick={() => setActive(card)}
-            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
+            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer shadow-lg"
           >
             <div className="flex gap-4 flex-col md:flex-row ">
               <motion.div layoutId={`image-${card.title}-${id}`}>
