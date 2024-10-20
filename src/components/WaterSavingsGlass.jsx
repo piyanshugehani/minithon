@@ -68,7 +68,6 @@ const PercentageIndicator = styled.span`
 
 const WaterSavingsGlass = ({ waterSavedPercentage }) => {
   const [waterLevelHeight, setWaterLevelHeight] = useState("0%");
-
   useEffect(() => {
     // Animate the water level when the component mounts
     setWaterLevelHeight(`${waterSavedPercentage}%`);
