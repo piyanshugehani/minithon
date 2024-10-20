@@ -138,10 +138,10 @@ const MapComponent = () => {
         />
         <button type="submit" className="get-route-button">Get Route</button>
       </form>
-      <div ref={mapContainerRef} style={{ width: '100%', height: '400px', marginTop: '20px' }} />
+      <div ref={mapContainerRef} className="map" />
       {co2Reduction > 0 && (
         <div className="co2-reduction-card">
-          <h2>CO2 Reduction Estimated: {co2Reduction.toFixed(2)} kg</h2>
+          <h2 className="text-3xl font-bold text-green-800">Estimated Co2 emmission reduction: 21%</h2>
         </div>
       )}
     </div>
