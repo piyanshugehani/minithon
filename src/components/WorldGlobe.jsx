@@ -4,38 +4,11 @@ import * as THREE from "three";
 import styled from "styled-components";
 
 const GlobeContainer = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
 
-  @media (max-width: 768px) {
-    height: 300px;
-  }
-
-  @media (min-width: 769px) {
-    height: 500px;
-  }
 `;
-
-const Card = styled.div`
-  width: 100%;
-  height: 100%;
-  max-width: 400px;
-  max-height: 400px;
-  border: 2px solid black;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-`;
-
 const WorldGlobe = () => {
   const globeEl = useRef();
 
@@ -74,8 +47,8 @@ const WorldGlobe = () => {
       <Globe
         ref={globeEl}
         animateIn={false}
-        width={350}
-        height={400}
+        height={250}
+        width={250}
         backgroundColor="rgba(0,0,0,0)" // Transparent background
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
