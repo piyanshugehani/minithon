@@ -40,30 +40,30 @@ const Navbar = () => {
         </div>
 
         <div className="w-[85%] text-black dark:text-white py-2 px-4 rounded-lg transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-700 hover:font-semibold">
-          <a href="/tasks" className='flex justify-start items-center'>
+          <a href="/events" className='flex justify-start items-center'>
             <span><NotebookIcon className="h-4 w-4 mr-2" /></span>
-            <p className="text-sm font-pop">My Tasks</p>
+            <p className="text-sm font-pop">Events</p>
           </a>
         </div>
 
         <div className="w-[85%] text-black dark:text-white py-2 px-4 rounded-lg transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-700 hover:font-semibold">
-          <a href="/projects" className='flex justify-start items-center'>
+          <a href="/leaderboard" className='flex justify-start items-center'>
             <span><Folder className="h-4 w-4 mr-2" /></span>
-            <p className="text-sm font-pop">Projects</p>
+            <p className="text-sm font-pop">Leaderboard</p>
           </a>
         </div>
 
         <div className="w-[85%] text-black dark:text-white py-2 px-4 rounded-lg transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-700 hover:font-semibold">
-          <a href="/resources" className='flex justify-start items-center'>
+          <a href="/calendar" className='flex justify-start items-center'>
             <span><FileText className="h-4 w-4 mr-2" /></span>
-            <p className="text-sm font-pop">Resources</p>
+            <p className="text-sm font-pop">Calendar</p>
           </a>
         </div>
 
         <div className="w-[85%] text-black dark:text-white py-2 px-4 rounded-lg transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-700 hover:font-semibold">
-          <a href="/reports" className='flex justify-start items-center'>
+          <a href="/maps" className='flex justify-start items-center'>
             <span><BarChart className="h-4 w-4 mr-2" /></span>
-            <p className="text-sm font-pop">Reports</p>
+            <p className="text-sm font-pop">Maps</p>
           </a>
         </div>
       </div>
@@ -90,10 +90,10 @@ const Navbar = () => {
 {isMobileMenuOpen && (
   <div className="flex flex-col items-center space-y-4 pb-4">
     <a href="/" className="text-black dark:text-white hover:font-semibold">Dashboard</a>
-    <a href="/tasks" className="text-black dark:text-white hover:font-semibold">My Tasks</a>
-    <a href="/projects" className="text-black dark:text-white hover:font-semibold">Projects</a>
-    <a href="/resources" className="text-black dark:text-white hover:font-semibold">Resources</a>
-    <a href="/reports" className="text-black dark:text-white hover:font-semibold">Reports</a>
+    <a href="/events" className="text-black dark:text-white hover:font-semibold">Events</a>
+    <a href="/leaderboard" className="text-black dark:text-white hover:font-semibold">Leaderboard</a>
+    <a href="/calendar" className="text-black dark:text-white hover:font-semibold">Calendar</a>
+    <a href="/maps" className="text-black dark:text-white hover:font-semibold">Maps</a>
     <a href="/account" className="text-black dark:text-white hover:font-semibold">Account</a>
   </div>
 )}
