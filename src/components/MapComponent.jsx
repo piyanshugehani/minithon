@@ -1,35 +1,45 @@
-// MapComponent.jsx
-import React, { useEffect, useRef } from 'react';
+// components/MapComponent.jsx
+import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+import './MapComponent.css'; // Import the CSS file for styles
 
-mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+mapboxgl.accessToken = 'pk.eyJ1IjoidGFudmlwNzk5OTkiLCJhIjoiY20yaDlicmRnMDQ2ajJpcXh1MXd1NGF0ayJ9.N8cWurKQsFuHf5bTnlIKSw';
 
-const MapComponent = ({ startLocation, endLocation }) => {
+const MapComponent = () => {
   const mapContainerRef = useRef(null);
+  const [startLocation, setStartLocation] = useState({ lat: null, lng: null });
+  const [endLocation, setEndLocation] = useState({ lat: null, lng: null });
+  const [startInput, setStartInput] = useState('');
+  const [endInput, setEndInput] = useState('');
+  const [co2Reduction, setCo2Reduction] = useState(0); // Placeholder for CO2 reduction data
 
   useEffect(() => {
+    if (!mapContainerRef.current) return;
+
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-74.5, 40], // Set to a default center
+      center: [-74.5, 40], // Default center
       zoom: 9,
     });
 
-    // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-    // Fetch directions and add the route to the map
     const getRoute = async () => {
-      if (!startLocation || !endLocation) return;
+      if (!startLocation.lat || !startLocation.lng || !endLocation.lat || !endLocation.lng) return;
 
       const response = await fetch(
         `https://api.mapbox.com/directions/v5/mapbox/driving/${startLocation.lng},${startLocation.lat};${endLocation.lng},${endLocation.lat}?geometries=geojson&access_token=${mapboxgl.accessToken}`
       );
 
+      if (!response.ok) {
+        console.error('Error fetching route:', response.statusText);
+        return;
+      }
+
       const data = await response.json();
       const route = data.routes[0].geometry.coordinates;
 
-      // Add the route to the map
       map.on('load', () => {
         map.addSource('route', {
           type: 'geojson',
@@ -52,25 +62,87 @@ const MapComponent = ({ startLocation, endLocation }) => {
             'line-join': 'round',
           },
           paint: {
-            'line-color': '#888',
-            'line-width': 8,
+            'line-color': '#00FF00', // Green color for the route
+            'line-width': 6,
           },
         });
 
-        // Center the map on the route
         const bounds = new mapboxgl.LngLatBounds();
         route.forEach(coord => bounds.extend(coord));
         map.fitBounds(bounds, { padding: 20 });
+
+        // Placeholder for CO2 reduction calculation
+        setCo2Reduction((data.routes[0].distance / 1000) * 0.15); // Example calculation based on distance
       });
     };
 
     getRoute();
 
-    // Clean up on component unmount
     return () => map.remove();
   }, [startLocation, endLocation]);
 
-  return <div ref={mapContainerRef} className="map-container" style={{ width: '100%', height: '400px' }} />;
+  const handleStartChange = (e) => {
+    setStartInput(e.target.value);
+  };
+
+  const handleEndChange = (e) => {
+    setEndInput(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Geocode the start location
+    const startResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(startInput)}.json?access_token=${mapboxgl.accessToken}`);
+    const startData = await startResponse.json();
+    if (startData.features.length > 0) {
+      setStartLocation({
+        lat: startData.features[0].center[1],
+        lng: startData.features[0].center[0],
+      });
+    }
+
+    // Geocode the end location
+    const endResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(endInput)}.json?access_token=${mapboxgl.accessToken}`);
+    const endData = await endResponse.json();
+    if (endData.features.length > 0) {
+      setEndLocation({
+        lat: endData.features[0].center[1],
+        lng: endData.features[0].center[0],
+      });
+    }
+  };
+
+  return (
+    <div className="map-container">
+      <h1 className="map-header">Find the Greenest Route to Save CO2!</h1>
+      <form onSubmit={handleSubmit} className="location-form">
+        <input
+          type="text"
+          placeholder="Start Location"
+          value={startInput}
+          onChange={handleStartChange}
+          required
+          className="location-input"
+        />
+        <input
+          type="text"
+          placeholder="End Location"
+          value={endInput}
+          onChange={handleEndChange}
+          required
+          className="location-input"
+        />
+        <button type="submit" className="get-route-button">Get Route</button>
+      </form>
+      <div ref={mapContainerRef} style={{ width: '100%', height: '400px', marginTop: '20px' }} />
+      {co2Reduction > 0 && (
+        <div className="co2-reduction-card">
+          <h2>CO2 Reduction Estimated: {co2Reduction.toFixed(2)} kg</h2>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default MapComponent;
