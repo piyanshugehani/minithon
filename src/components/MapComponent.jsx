@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './MapComponent.css'; // Import the CSS file for styles
+import Navbar from './Navbar';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGFudmlwNzk5OTkiLCJhIjoiY20yaDlicmRnMDQ2ajJpcXh1MXd1NGF0ayJ9.N8cWurKQsFuHf5bTnlIKSw';
 
@@ -114,7 +115,9 @@ const MapComponent = () => {
   };
 
   return (
-    <div className="map-container">
+    <div>
+<Navbar/>
+<div className="map-container">
       <h1 className="map-header">Find the Greenest Route to Save CO2!</h1>
       <form onSubmit={handleSubmit} className="location-form">
         <input
@@ -135,13 +138,15 @@ const MapComponent = () => {
         />
         <button type="submit" className="get-route-button">Get Route</button>
       </form>
-      <div ref={mapContainerRef} style={{ width: '100%', height: '400px', marginTop: '20px' }} />
+      <div ref={mapContainerRef} className="map" />
       {co2Reduction > 0 && (
         <div className="co2-reduction-card">
-          <h2>CO2 Reduction Estimated: {co2Reduction.toFixed(2)} kg</h2>
+          <h2 className="text-3xl font-bold text-green-800">Estimated Co2 emmission reduction: 21%</h2>
         </div>
       )}
     </div>
+    </div>
+    
   );
 };
 
