@@ -1,13 +1,31 @@
 import moment from "moment";
 import Calendar from "./CalendarTemplate";
 import { useState } from "react";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Calendar as CalendarIcon } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Calendar as ShadCalendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
+import { clsx } from "clsx";
 
 const CalendarComponent = () => {
   const [events, setEvents] = useState([
@@ -25,18 +43,26 @@ const CalendarComponent = () => {
 
   const [newEvent, setNewEvent] = useState({
     title: "",
-    startDate: "",
+    startDate: null,
     startTime: "",
-    endDate: "",
+    endDate: null,
     endTime: "",
   });
 
   const handleAddEvent = () => {
     const { title, startDate, startTime, endDate, endTime } = newEvent;
 
-    const start = moment(`${startDate} ${startTime}`, "YYYY-MM-DD HH:mm").toDate();
-    const end = moment(`${endDate} ${endTime}`, "YYYY-MM-DD HH:mm").toDate();
+    // Check if required fields are filled
+    if (!title || !startDate || !startTime || !endDate || !endTime) {
+      console.error('Please fill in all required fields');
+      return;
+    }
 
+    // Parse dates correctly
+    const start = moment(`${format(startDate, "yyyy-MM-dd")} ${startTime}`, "yyyy-MM-dd HH:mm").toDate();
+    const end = moment(`${format(endDate, "yyyy-MM-dd")} ${endTime}`, "yyyy-MM-dd HH:mm").toDate();
+
+    // Add the event to the state
     setEvents((prevEvents) => [
       ...prevEvents,
       {
@@ -49,9 +75,9 @@ const CalendarComponent = () => {
     // Reset form
     setNewEvent({
       title: "",
-      startDate: "",
+      startDate: null,
       startTime: "",
-      endDate: "",
+      endDate: null,
       endTime: "",
     });
   };
@@ -67,8 +93,8 @@ const CalendarComponent = () => {
   const components = {
     event: (props) => {
       const { title, start, end } = props.event;
-      const startDate = moment(start).format("MMMM Do YYYY, h:mm a");
-      const endDate = moment(end).format("MMMM Do YYYY, h:mm a");
+      const startDate = moment(start).local().format("MMMM Do YYYY, h:mm a");
+      const endDate = moment(end).local().format("MMMM Do YYYY, h:mm a");
 
       return (
         <TooltipProvider>
@@ -128,10 +154,13 @@ const CalendarComponent = () => {
 
       <Dialog>
         <DialogTrigger>
-          <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-            Add New Event
-          </button>
+          <div className="flex justify-center mb-4">
+            <button className="px-4 py-2 bg-[#17405d] text-white rounded-md hover:bg-blue-600 my-6">
+              Add New Event
+            </button>
+          </div>
         </DialogTrigger>
+
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Add New Event</DialogTitle>
@@ -148,14 +177,36 @@ const CalendarComponent = () => {
               placeholder="Event Name"
               className="w-full p-2 border border-gray-300 rounded-md"
             />
+
             <div className="grid grid-cols-2 gap-4">
-              <input
-                type="date"
-                name="startDate"
-                value={newEvent.startDate}
-                onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-md"
-              />
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant={"outline"}
+                    className={cn(
+                      "w-full justify-start text-left font-normal",
+                      !newEvent.startDate && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon />
+                    {newEvent.startDate ? (
+                      format(newEvent.startDate, "PPP")
+                    ) : (
+                      <span>Pick a start date</span>
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                  <ShadCalendar
+                    mode="single"
+                    selected={newEvent.startDate}
+                    onSelect={(date) =>
+                      setNewEvent((prev) => ({ ...prev, startDate: date }))
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
               <input
                 type="time"
                 name="startTime"
@@ -164,14 +215,36 @@ const CalendarComponent = () => {
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
             </div>
+
             <div className="grid grid-cols-2 gap-4">
-              <input
-                type="date"
-                name="endDate"
-                value={newEvent.endDate}
-                onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-md"
-              />
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant={"outline"}
+                    className={cn(
+                      "w-full justify-start text-left font-normal",
+                      !newEvent.endDate && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon />
+                    {newEvent.endDate ? (
+                      format(newEvent.endDate, "PPP")
+                    ) : (
+                      <span>Pick an end date</span>
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                  <ShadCalendar
+                    mode="single"
+                    selected={newEvent.endDate}
+                    onSelect={(date) =>
+                      setNewEvent((prev) => ({ ...prev, endDate: date }))
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
               <input
                 type="time"
                 name="endTime"
@@ -180,9 +253,10 @@ const CalendarComponent = () => {
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
             </div>
+
             <button
               onClick={handleAddEvent}
-              className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+              className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800"
             >
               Add Event
             </button>

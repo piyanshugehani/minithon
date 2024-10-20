@@ -61,9 +61,9 @@ const Navbar = () => {
         </div>
 
         <div className="w-[85%] text-black dark:text-white py-2 px-4 rounded-lg transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-700 hover:font-semibold">
-          <a href="/reports" className='flex justify-start items-center'>
+          <a href="/maps" className='flex justify-start items-center'>
             <span><BarChart className="h-4 w-4 mr-2" /></span>
-            <p className="text-sm font-pop">Reports</p>
+            <p className="text-sm font-pop">Maps</p>
           </a>
         </div>
       </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
     <a href="/events" className="text-black dark:text-white hover:font-semibold">Events</a>
     <a href="/leaderboard" className="text-black dark:text-white hover:font-semibold">Leaderboard</a>
     <a href="/calendar" className="text-black dark:text-white hover:font-semibold">Calendar</a>
-    <a href="/reports" className="text-black dark:text-white hover:font-semibold">Reports</a>
+    <a href="/maps" className="text-black dark:text-white hover:font-semibold">Maps</a>
     <a href="/account" className="text-black dark:text-white hover:font-semibold">Account</a>
   </div>
 )}
