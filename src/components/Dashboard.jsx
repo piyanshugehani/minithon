@@ -1,9 +1,15 @@
-import React from 'react';
-import { MdAddTask, MdAttachMoney, MdBarChart, MdFileCopy } from 'react-icons/md';
-import BarChart from './BarChart';
-import LineChart from './LineChart';
-import PieChart from './PieChart';
-import { BadgePercentIcon } from 'lucide-react';
+import React from "react";
+import {
+  MdAddTask,
+  MdAttachMoney,
+  MdBarChart,
+  MdFileCopy,
+} from "react-icons/md";
+import BarChart from "./BarChart";
+import LineChart from "./LineChart";
+import PieChart from "./PieChart";
+import { BadgePercentIcon } from "lucide-react";
+import WorldGlobe from "./WorldGlobe";
 
 const DashboardCard = ({ title, value, icon }) => (
   <div className=" dark:bg-black bg-white text-black dark:text-white p-2 px-4 pt-4 rounded-lg shadow-md flex items-center">
@@ -16,17 +22,17 @@ const DashboardCard = ({ title, value, icon }) => (
 );
 
 const tasks = [
-  { name: 'Task 1', time: '10 minutes ago', progress: '20%' },
-  { name: 'Task 2', time: '1 day ago', progress: '45%' },
-  { name: 'Task 3', time: '2 days ago', progress: '75%' },
-  { name: 'Task 4', time: '5 days ago', progress: '95%' },
+  { name: "Task 1", time: "10 minutes ago", progress: "20%" },
+  { name: "Task 2", time: "1 day ago", progress: "45%" },
+  { name: "Task 3", time: "2 days ago", progress: "75%" },
+  { name: "Task 4", time: "5 days ago", progress: "95%" },
 ];
 
 const projects = [
-  { name: 'Project Alpha', progress: 80 },
-  { name: 'Project Beta', progress: 60 },
-  { name: 'Project Gamma', progress: 40 },
-  { name: 'Project Delta', progress: 90 },
+  { name: "Project Alpha", progress: 80 },
+  { name: "Project Beta", progress: 60 },
+  { name: "Project Gamma", progress: 40 },
+  { name: "Project Delta", progress: 90 },
 ];
 
 const Dashboard = () => {
@@ -39,16 +45,7 @@ const Dashboard = () => {
           value="14 tasks"
           icon={<MdBarChart className="text-3xl" />}
         />
-        <DashboardCard
-          title="In Progress"
-          value="8 tasks"
-          icon={<MdAttachMoney className="text-3xl" />}
-        />
-        <DashboardCard
-          title="Completed"
-          value="7 tasks"
-          icon={<MdAddTask className="text-3xl" />}
-        />
+
         <DashboardCard
           title="Task Completion Rate"
           value="81%"
@@ -63,23 +60,7 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
         <div className="dark:bg-black bg-white text-black dark:text-white p-2 px-4 pt-4 rounded-lg shadow-md">
-          <h3 className="text-lg font-bold mb-4">Assigned to me</h3>
-          <ul className="space-y-4">
-            {tasks.map((task, index) => (
-              <li key={index} className="flex justify-between items-center">
-                <div>
-                  <p className="font-semibold">{task.name}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{task.time}</p>
-                </div>
-                <div className="bg-gray-200 dark:bg-gray-600 rounded-full h-2 w-24">
-                  <div
-                    className="bg-blue-500 h-2 rounded-full"
-                    style={{ width: task.progress }}
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
+          <WorldGlobe />
         </div>
 
         <div className="dark:bg-black bg-white text-black dark:text-white p-2 px-4 pt-4 rounded-lg shadow-md">
@@ -90,7 +71,9 @@ const Dashboard = () => {
                 <div className="mr-4">
                   <img
                     className="w-10 h-10 rounded-full"
-                    src={`https://randomuser.me/api/portraits/thumb/men/${index + 10}.jpg`}
+                    src={`https://randomuser.me/api/portraits/thumb/men/${
+                      index + 10
+                    }.jpg`}
                     alt="User"
                   />
                 </div>
@@ -131,7 +114,8 @@ const Dashboard = () => {
               <div>
                 <p className="font-semibold">John Doe</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Notes from yesterday's meeting: Show more meta data on collapse sections
+                  Notes from yesterday's meeting: Show more meta data on
+                  collapse sections
                 </p>
               </div>
             </div>
@@ -143,7 +127,9 @@ const Dashboard = () => {
               />
               <div>
                 <p className="font-semibold">Jane Smith</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Can we schedule a meeting?</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Can we schedule a meeting?
+                </p>
               </div>
             </div>
           </div>
@@ -155,23 +141,35 @@ const Dashboard = () => {
             <li className="flex justify-between items-center">
               <div>
                 <p className="font-semibold">Activity One</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Description of activity one.</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Description of activity one.
+                </p>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">5 mins ago</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                5 mins ago
+              </p>
             </li>
             <li className="flex justify-between items-center">
               <div>
                 <p className="font-semibold">Activity Two</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Description of activity two.</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Description of activity two.
+                </p>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">1 hour ago</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                1 hour ago
+              </p>
             </li>
             <li className="flex justify-between items-center">
               <div>
                 <p className="font-semibold">Activity Three</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Description of activity three</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Description of activity three
+                </p>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">1 hour ago</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                1 hour ago
+              </p>
             </li>
           </ul>
         </div>
