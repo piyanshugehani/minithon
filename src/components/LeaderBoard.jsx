@@ -4,7 +4,6 @@ const Leaderboard = () => {
   const [view, setView] = useState('24h');
   const [leaderboardType, setLeaderboardType] = useState('appWide');
 
-  // App-wide leaderboard data
   const appWideLeaderboardData = [
     { place: 1, name: 'EcoWarrior', co2Reduction: '40%', practices: 5, impactScore: 95 },
     { place: 2, name: 'GreenGiant', co2Reduction: '35%', practices: 4, impactScore: 90 },
@@ -18,7 +17,6 @@ const Leaderboard = () => {
     { place: 10, name: 'ClimateChampion', co2Reduction: '3%', practices: 0, impactScore: 50 },
   ];
 
-  // Friends-only leaderboard data
   const friendsLeaderboardData = [
     { place: 1, name: 'EcoBuddy1', co2Reduction: '50%', practices: 6, impactScore: 98 },
     { place: 2, name: 'GreenPal', co2Reduction: '45%', practices: 5, impactScore: 93 },
@@ -134,7 +132,7 @@ const Leaderboard = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Impact Score</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
             {leaderboardData.map((player, index) => (
               <tr key={index} className="hover:bg-gray-100 transition-colors">
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{player.place}</td>
@@ -152,3 +150,4 @@ const Leaderboard = () => {
 };
 
 export default Leaderboard;
+
