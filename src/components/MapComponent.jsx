@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './MapComponent.css'; // Import the CSS file for styles
+import Navbar from './Navbar';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGFudmlwNzk5OTkiLCJhIjoiY20yaDlicmRnMDQ2ajJpcXh1MXd1NGF0ayJ9.N8cWurKQsFuHf5bTnlIKSw';
 
@@ -114,7 +115,9 @@ const MapComponent = () => {
   };
 
   return (
-    <div className="map-container">
+    <div>
+<Navbar/>
+<div className="map-container">
       <h1 className="map-header">Find the Greenest Route to Save CO2!</h1>
       <form onSubmit={handleSubmit} className="location-form">
         <input
@@ -142,6 +145,8 @@ const MapComponent = () => {
         </div>
       )}
     </div>
+    </div>
+    
   );
 };
 

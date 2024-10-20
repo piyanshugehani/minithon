@@ -4,36 +4,9 @@ import * as THREE from "three";
 import styled from "styled-components";
 
 const GlobeContainer = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-
-  @media (max-width: 768px) {
-    height: 300px;
-  }
-
-  @media (min-width: 769px) {
-    height: 500px;
-  }
-`;
-
-const Card = styled.div`
-  width: 100%;
-  height: 100%;
-  max-width: 400px;
-  max-height: 400px;
-  border: 2px solid black;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 `;
 
 const WorldGlobe = () => {
@@ -42,13 +15,16 @@ const WorldGlobe = () => {
   useEffect(() => {
     const globe = globeEl.current;
 
+    // Increase the autoRotateSpeed for faster rotation (2x faster)
     globe.controls().autoRotate = true;
-    globe.controls().autoRotateSpeed = 0.35;
+    globe.controls().autoRotateSpeed = 1.5; // Increased from 0.75 to 1.5
 
     const CLOUDS_IMG_URL =
       "https://raw.githubusercontent.com/turban/webgl-earth/master/examples/earth-clouds.png";
     const CLOUDS_ALT = 0.004;
-    const CLOUDS_ROTATION_SPEED = -0.006;
+
+    // Increase the CLOUDS_ROTATION_SPEED for faster cloud rotation (2x faster)
+    const CLOUDS_ROTATION_SPEED = -0.024; // Increased from -0.012 to -0.024
 
     new THREE.TextureLoader().load(CLOUDS_IMG_URL, (cloudsTexture) => {
       const clouds = new THREE.Mesh(
@@ -74,8 +50,8 @@ const WorldGlobe = () => {
       <Globe
         ref={globeEl}
         animateIn={false}
-        width={350}
-        height={400}
+        height={250}
+        width={250}
         backgroundColor="rgba(0,0,0,0)" // Transparent background
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
