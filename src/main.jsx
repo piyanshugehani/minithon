@@ -8,6 +8,7 @@ import { BrowserRouter,Routes, Route, useNavigate, Router } from 'react-router-d
 import Signin from './components/Signin.jsx'
 
 
+
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -23,6 +24,7 @@ const ClerkWithRoutes = () => {
       <Route path="/" element={<App/>}/>
       <Route path="/signup/" element={<Signup/>}/>
       <Route path="/signin/" element={<Signin/>}/>
+ 
     </Routes>
   </ClerkProvider>)
 }
