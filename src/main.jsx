@@ -7,6 +7,7 @@ import Signup from './components/Signup.jsx'
 import { BrowserRouter,Routes, Route, useNavigate, Router } from 'react-router-dom'
 import Signin from './components/Signin.jsx'
 
+
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
