@@ -1,55 +1,61 @@
 /* MapComponent.css */
-
 .map-container {
-    width: 100%;
-    max-width: 800px; /* Adjust as needed */
-    margin: 0 auto; /* Center the container */
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background-color: #f9f9f9; /* Light background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
   }
   
   .map-header {
-    text-align: center;
-    font-size: 24px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2e7d32; /* Green color */
     margin-bottom: 20px;
-    color: #333; /* Dark color for contrast */
   }
   
   .location-form {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Space between inputs */
+    align-items: center;
+    margin-bottom: 20px;
   }
   
   .location-input {
     padding: 10px;
+    margin: 5px;
+    width: 300px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 1rem;
   }
   
   .get-route-button {
-    padding: 10px;
-    background-color: #28a745; /* Green color for the button */
-    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    background-color: #4caf50; /* Green background */
+    color: white;
+    font-size: 1rem;
     cursor: pointer;
   }
   
   .get-route-button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .map {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    border: 1px solid #ccc; /* Optional border */
   }
   
   .co2-reduction-card {
     margin-top: 20px;
     padding: 15px;
-    background-color: #e3f2fd; /* Light blue background */
-    border-radius: 5px;
-    text-align: center;
+    border-radius: 8px;
+    background-color: #f0f8ff; /* Light background */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   

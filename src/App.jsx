@@ -34,7 +34,7 @@ function App() {
             <Dashboard />
 
             {/* Add Location Inputs */}
-            <form onSubmit={handleSubmit} className="mb-4">
+            {/* <form onSubmit={handleSubmit} className="mb-4">
               <input
                 type="text"
                 placeholder="Start Location (lat,lng)"
@@ -61,7 +61,7 @@ function App() {
             </form>
 
             {/* Render the Map */}
-            <MapComponent startLocation={startLocation} endLocation={endLocation} />
+            {/* <MapComponent startLocation={startLocation} endLocation={endLocation} /> */}
           </div>
         </main>
       </div>
