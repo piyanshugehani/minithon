@@ -22,7 +22,7 @@ const PieChart = () => {
   };
 
   return (
-    <div className="dark:bg-gray-800 bg-white text-black dark:text-white p-4 rounded-lg shadow-md transition-shadow hover:shadow-xl">
+    <div className="dark:bg-black bg-white text-black dark:text-white p-4 rounded-lg shadow-md transition-shadow hover:shadow-xl">
       <h2 className="text-lg font-bold mb-4">Emission Breakdown</h2>
       <div className="flex items-center justify-center">
         <div style={{ maxWidth: "250px" }}>

@@ -43,30 +43,30 @@ const BarChart = () => {
       legend: {
         position: "top",
         labels: {
-          color: "black", // Change legend text color
+          color: "white", // Change legend text color to white
         },
       },
       tooltip: {
         backgroundColor: "rgba(255, 255, 255, 0.9)", // Tooltip background
-        titleColor: "black",
-        bodyColor: "black",
+        titleColor: "white", // Change tooltip title color to white
+        bodyColor: "white", // Change tooltip body color to white
       },
     },
     scales: {
       x: {
         ticks: {
-          color: "#333", // X-axis labels color
+          color: "white", // Change X-axis labels color to white
         },
         grid: {
-          color: "rgba(0, 0, 0, 0.1)", // Grid color
+          color: "rgba(255, 255, 255, 0.1)", // Change grid color for visibility
         },
       },
       y: {
         ticks: {
-          color: "#333", // Y-axis labels color
+          color: "white", // Change Y-axis labels color to white
         },
         grid: {
-          color: "rgba(0, 0, 0, 0.1)", // Grid color
+          color: "rgba(255, 255, 255, 0.1)", // Change grid color for visibility
         },
       },
     },
@@ -74,7 +74,9 @@ const BarChart = () => {
 
   return (
     <div className="dark:bg-black bg-white text-black dark:text-white p-4 rounded-lg shadow-md">
-      <h2 className="text-lg font-bold mb-4">Carbon Emission Overview</h2>
+      <h2 className="text-lg font-bold mb-4" style={{ color: "white" }}>
+        Carbon Emission Overview
+      </h2>
       <div style={{ height: "300px" }}>
         <Bar data={data} options={options} />
       </div>
