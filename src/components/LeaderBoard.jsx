@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
+import { Copy } from "lucide-react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Leaderboard = () => {
   const [view, setView] = useState('24h');
   const [leaderboardType, setLeaderboardType] = useState('appWide');
+  const [selectedPlayer, setSelectedPlayer] = useState(null); // State for selected player
 
   const appWideLeaderboardData = [
     { place: 1, name: 'EcoWarrior', co2Reduction: '40%', practices: 5, impactScore: 95 },
@@ -14,28 +26,22 @@ const Leaderboard = () => {
     { place: 7, name: 'WasteWatcher', co2Reduction: '15%', practices: 1, impactScore: 65 },
     { place: 8, name: 'NatureLover', co2Reduction: '10%', practices: 1, impactScore: 60 },
     { place: 9, name: 'RecycleRanger', co2Reduction: '5%', practices: 1, impactScore: 55 },
-    { place: 10, name: 'ClimateChampion', co2Reduction: '3%', practices: 0, impactScore: 50 },
+    { place: 10, name: 'ClimateChampion', co2Reduction: '3%', practices: 0, impactScore: 50 }
   ];
 
   const friendsLeaderboardData = [
     { place: 1, name: 'EcoBuddy1', co2Reduction: '50%', practices: 6, impactScore: 98 },
     { place: 2, name: 'GreenPal', co2Reduction: '45%', practices: 5, impactScore: 93 },
     { place: 3, name: 'SustainableFriend', co2Reduction: '38%', practices: 4, impactScore: 88 },
-    { place: 4, name: 'EarthAdvocate', co2Reduction: '30%', practices: 3, impactScore: 80 },
-    { place: 5, name: 'PlanetPal', co2Reduction: '28%', practices: 2, impactScore: 78 },
+    { place: 4, name: 'SustainableSam', co2Reduction: '30%', practices: 3, impactScore: 85 },
+    { place: 5, name: 'PlanetProtector', co2Reduction: '28%', practices: 3, impactScore: 80 },
+    { place: 6, name: 'EcoFriendly', co2Reduction: '25%', practices: 2, impactScore: 75 },
+    { place: 7, name: 'GreenThumb', co2Reduction: '20%', practices: 2, impactScore: 70 }
   ];
-
-  const handleViewChange = (selectedView) => {
-    setView(selectedView);
-  };
 
   const handleLeaderboardTypeChange = (type) => {
     setLeaderboardType(type);
   };
-
-  const leaderboardData = leaderboardType === 'appWide' ? appWideLeaderboardData : friendsLeaderboardData;
-
-  // Sample account data
   const accountData = {
     name: "Tanvi Patil",
     profileImage: "https://via.placeholder.com/150", // Replace with actual image URL
@@ -46,10 +52,14 @@ const Leaderboard = () => {
     },
   };
 
+  const leaderboardData = leaderboardType === 'appWide' ? appWideLeaderboardData : friendsLeaderboardData;
+
   return (
     <div className="min-h-screen bg-white p-6 md:p-12">
       {/* Account Info Section */}
-      <div className="flex items-center mb-8">
+      <div className="flex items-center justify-between mb-8">
+        
+      <div className="flex items-center">
         <img
           src={accountData.profileImage}
           alt="Profile"
@@ -65,12 +75,54 @@ const Leaderboard = () => {
         </div>
       </div>
 
-      {/* Combined Leaderboard Type and Invite Friends Button */}
+        {/* Share Profile Button with Dialog */}
+        <Dialog>
+          <DialogTrigger asChild>
+            <button className="border-2 border-green-800 rounded px-4 py-2 hover:bg-gray-100">
+              Share Profile
+            </button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Share Profile Link</DialogTitle>
+              <DialogDescription>
+                Copy the link to share your profile with others!
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex items-center space-x-2">
+              <div className="grid flex-1 gap-2">
+                <label htmlFor="profileLink" className="sr-only">Profile Link</label>
+                <input
+                  id="profileLink"
+                  type="text"
+                  value="https://profilelink.com/tanvipatil" // Example link
+                  readOnly
+                  className="border px-2 py-1 rounded w-full"
+                />
+              </div>
+              <button type="button" className="px-3 border border-gray-300 rounded hover:bg-gray-100">
+                <span className="sr-only">Copy</span>
+                <Copy className="h-4 w-4" />
+              </button>
+            </div>
+            <DialogFooter className="sm:justify-start">
+              <DialogClose asChild>
+                <button type="button" className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+                  Close
+                </button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
+      <hr className="border-t border-gray-300 my-6" />
+
+      {/* Leaderboard Type Buttons and Invite Friends */}
       <div className="flex justify-between items-center mb-6">
         <div className="flex space-x-4">
           <button
             className={`${
-              leaderboardType === 'appWide' ? 'bg-green-200 text-white' : 'bg-white text-black'
+              leaderboardType === 'appWide' ? 'bg-green-200 text-black' : 'bg-white text-black'
             } border-2 border-green-600 rounded-lg px-4 py-2 transition hover:bg-green-600 hover:text-white`}
             onClick={() => handleLeaderboardTypeChange('appWide')}
           >
@@ -78,20 +130,54 @@ const Leaderboard = () => {
           </button>
           <button
             className={`${
-              leaderboardType === 'friends' ? 'bg-green-200 text-white' : 'bg-white text-black'
+              leaderboardType === 'friends' ? 'bg-green-200 text-black' : 'bg-white text-black'
             } border-2 border-green-600 rounded-lg px-4 py-2 transition hover:bg-green-600 hover:text-white`}
             onClick={() => handleLeaderboardTypeChange('friends')}
           >
             Friends Leaderboard
           </button>
         </div>
-        <button className="bg-green-200 text-white px-4 py-2 border-2 border-green-600 rounded-lg shadow hover:bg-green-600 transition">
-          Invite Friends
-        </button>
-      </div>
 
-      {/* Top 3 Players Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {/* Invite Friends Modal */}
+        <Dialog>
+          <DialogTrigger asChild>
+            <button className="border-2 rounded px-4 py-2 border-green-800 hover:bg-gray-100">Invite Friends</button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Enter Profile Link</DialogTitle>
+              <DialogDescription>
+                Enter the profile link of your friend to invite them!
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex items-center space-x-2">
+              <div className="grid flex-1 gap-2">
+                <label htmlFor="friendLink" className="sr-only">Friend's Link</label>
+                <input
+                  id="friendLink"
+                  type="text"
+                  placeholder="Enter your friend's profile link"
+                  className="border px-2 py-1 rounded w-full"
+                />
+              </div>
+              <button type="button" className="px-3 border border-gray-300 rounded hover:bg-gray-100">
+                <span className="sr-only">Copy</span>
+                <Copy className="h-4 w-4" />
+              </button>
+            </div>
+            <DialogFooter className="sm:justify-start">
+              <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Add Friend</button>
+              <DialogClose asChild>
+                <button type="button" className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+                  Close
+                </button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
+{/* Top 3 Players Section */}
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         {leaderboardData.slice(0, 3).map((player, index) => (
           <div
             key={index}
@@ -120,34 +206,62 @@ const Leaderboard = () => {
         ))}
       </div>
 
-      {/* Full Leaderboard Section */}
-      <div className="overflow-hidden border-2 border-green-800 bg-white rounded-lg shadow">
-        <table className="min-w-full  divide-y divide-gray-200">
-          <thead className="bg-green-200 border-b-2 border-green-800">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Rank</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Player</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">CO2 Reduction</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Practices</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Impact Score</th>
+
+      {/* Leaderboard Section */}
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-300">
+          <thead>
+            <tr className="bg-green-100">
+              <th className="py-2 px-4 border">Rank</th>
+              <th className="py-2 px-4 border">Name</th>
+              <th className="py-2 px-4 border">CO2 Reduction</th>
+              <th className="py-2 px-4 border">Practices</th>
+              <th className="py-2 px-4 border">Impact Score</th>
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-            {leaderboardData.map((player, index) => (
-              <tr key={index} className="hover:bg-gray-100 transition-colors">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{player.place}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{player.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{player.co2Reduction}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{player.practices}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{player.impactScore}</td>
+          <tbody>
+            {leaderboardData.map((player) => (
+              <tr
+                key={player.place}
+                className="hover:bg-gray-100 cursor-pointer"
+                onClick={() => setSelectedPlayer(player)} // Set the selected player
+              >
+                <td className="py-2 px-4 border text-center">{player.place}</td>
+                <td className="py-2 px-4 border">{player.name}</td>
+                <td className="py-2 px-4 border text-center">{player.co2Reduction}</td>
+                <td className="py-2 px-4 border text-center">{player.practices}</td>
+                <td className="py-2 px-4 border text-center">{player.impactScore}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {/* Player Profile Dialog */}
+      {selectedPlayer && (
+        <Dialog open={!!selectedPlayer} onOpenChange={(open) => !open && setSelectedPlayer(null)}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>{selectedPlayer.name}'s Profile</DialogTitle>
+              <DialogDescription>
+                View the profile details of {selectedPlayer.name}.
+              </DialogDescription>
+            </DialogHeader>
+            <p><strong>CO2 Reduction:</strong> {selectedPlayer.co2Reduction}</p>
+            <p><strong>Practices:</strong> {selectedPlayer.practices}</p>
+            <p><strong>Impact Score:</strong> {selectedPlayer.impactScore}</p>
+            <DialogFooter className="sm:justify-start">
+              <DialogClose asChild>
+                <button type="button" className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+                  Close
+                </button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };
 
 export default Leaderboard;
-
