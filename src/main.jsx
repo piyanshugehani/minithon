@@ -10,6 +10,8 @@ import Lead from './components/Lead.jsx'
 import Calendar from './components/Calendar.jsx'
 import Cal from './components/Cal.jsx'
 import Events from './components/Events.jsx'
+import Communities from './components/Communities.jsx'
+import Doubts from './components/Doubts.jsx';
 import Maps from './components/MapComponent.jsx'
 
 // Import your publishable key
@@ -30,6 +32,8 @@ const ClerkWithRoutes = () => {
       <Route path="/leaderboard/" element={<Lead/>}/>
       <Route path='/calendar/' element={<Cal/>} />
       <Route path='/events/' element={<Events/>}/>
+      <Route path="/community/" element={<Communities />} />
+        <Route path="/community/:communityId" element={<Doubts />} />
       <Route path='/maps/' element={<Maps/>}/>
       
     </Routes>
