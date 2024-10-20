@@ -28,7 +28,7 @@ const ClerkWithRoutes = () => {
       <Route path="/signup/" element={<Signup/>}/>
       <Route path="/signin/" element={<Signin/>}/>
       <Route path="/leaderboard/" element={<Lead/>}/>
-      <Route path='/calendar/' element={<Cal/>}/>
+      <Route path='/calendar/' element={<Cal/>} />
       <Route path='/events/' element={<Events/>}/>
     </Routes>
   </ClerkProvider>)
