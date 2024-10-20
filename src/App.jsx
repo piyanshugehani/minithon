@@ -7,6 +7,8 @@ import ThemeToggle from './components/ThemeToggle';
 import { Button } from "@/components/ui/button";
 import { AnimatedBeam } from './../components/ui/animated-beam';
 import { CardBody, CardContainer, CardItem } from "./../components/ui/3d-card";
+import Dashboard from './components/Dashboard';
+import Navbar from './components/Navbar';
 
 function ThreeDCardDemo() {
   return (
@@ -72,6 +74,7 @@ function App() {
   return (
     <>
       <div className="min-h-screen bg-white dark:bg-black text-gray-800 dark:text-gray-200">
+      <Navbar />
         <header className="p-4 flex justify-between items-center">
           <h1 className="text-2xl">Minithon</h1>
           <div className='flex justify-around'>
@@ -80,16 +83,10 @@ function App() {
           </div>
         </header>
         <main className="p-4" ref={containerRef}>
-          <Button variant="outline">Button</Button>
-          <div ref={div1Ref} className="absolute left-0">{"<"}</div>
-          <div ref={div2Ref} className="absolute right-0">{">"}</div>
-          <AnimatedBeam
-            duration={3}
-            containerRef={containerRef}
-            fromRef={div1Ref}
-            toRef={div2Ref}
-          />
-          <ThreeDCardDemo/>
+          
+      <div className="ml-0 mr-0 md:ml-[15%] md:mr-[2%] lg:ml-[15%] lg:mr-[2%]">
+      <Dashboard/>
+      </div>
         </main>
       </div>
     </>
