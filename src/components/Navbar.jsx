@@ -22,11 +22,11 @@ const Navbar = () => {
             <span><Atom className='h-6 text-black dark:text-white mr-2' /></span>
             {/* Corrected text color in dark mode */}
             <h1 className="text-xl font-semibold font-pop text-black dark:text-white mb-1 text-center">
-              UrbanSync
+              EcoSphere
             </h1>
           </div>
           <p className="text-xs text-gray-400 dark:text-gray-500 tracking-tight font-pop text-center">
-            Seamless City Synergy
+            Empowering Sustainability
           </p>
         </div>
       </a>
@@ -79,9 +79,10 @@ const Navbar = () => {
 
 
       <div className="w-[85%] text-black dark:text-white py-2 px-4 rounded-lg transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-700 hover:font-semibold">
-        <a href="/account" className='flex justify-start items-center'>
+        <a href="/" className='flex justify-start items-center'>
           <span><User className="h-4 w-4 mr-2" /></span>
           <p className="text-sm font-pop">Account</p>
+          
         </a>
       </div>
     </nav>
@@ -105,7 +106,7 @@ const Navbar = () => {
     <a href="/calendar" className="text-black dark:text-white hover:font-semibold">Calendar</a>
     <a href="/maps" className="text-black dark:text-white hover:font-semibold">Maps</a>
     <a href="/community" className="text-black dark:text-white hover:font-semibold">Community</a>
-    <a href="/account" className="text-black dark:text-white hover:font-semibold">Account</a>
+    <a href="/" className="text-black dark:text-white hover:font-semibold">Account</a>
     
   </div>
 )}

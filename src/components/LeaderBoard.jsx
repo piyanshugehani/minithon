@@ -44,7 +44,7 @@ const Leaderboard = () => {
   };
   const accountData = {
     name: "Tanvi Patil",
-    profileImage: "https://via.placeholder.com/150", // Replace with actual image URL
+    profileImage: "https://cdn.pixabay.com/photo/2021/01/04/10/41/icon-5887126_1280.png", // Replace with actual image URL
     accountInfo: {
       co2Reduction: '35%',
       practices: 3,

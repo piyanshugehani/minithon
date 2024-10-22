@@ -11,10 +11,10 @@ function Cal() {
       <Navbar />
       <header className="p-4 flex justify-between items-center">
         <h1 className="text-2xl">Minithon</h1>
-        <div className="flex justify-around">
+        {/* <div className="flex justify-around">
           <ThemeToggle />
           <User />
-        </div>
+        </div> */}
       </header>
       <main className="p-4" ref={containerRef}>
         <div className="ml-0 mr-0 md:ml-[15%] md:mr-[2%] lg:ml-[15%] lg:mr-[2%] h-[100vh]">

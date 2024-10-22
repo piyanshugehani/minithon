@@ -28,10 +28,10 @@ const projects = [
   { name: "Ashley Frenandes", progress: 90 },
 ];
 
-const Dashboard = () => {
+const Dashboard = ({ username }) => {
   return (
-    <div className="p-4 min-h-screen bg-gray-100 dark:bg-gray-950 dark:text-white">
-      <h2 className="pt-4 text-3xl font-bold mb-6">Morning, Tanvi!</h2>
+    <div className="p-4 min-h-screen bg-gray-50 dark:bg-[rgb(0_6_12)] dark:text-white">
+      <h2 className="pt-4 text-3xl font-bold mb-6">Morning, {username}!</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <DashboardCard
           title="Carbon Emission Saved"
@@ -55,7 +55,7 @@ const Dashboard = () => {
         <div className="dark:bg-black bg-white text-black dark:text-white p-2 px-4 pt-4 rounded-lg shadow-md">
           <h3 className="text-lg font-bold mb-4">Daily World Emissions</h3>
           <WorldGlobe />
-          <h3 className="text-lg font-bold mb-4">400 Metric Tons</h3>
+          <h3 className="text-lg font-bold mb-4 text-red-300">400 Metric Tons</h3>
         </div>
 
         <div className="dark:bg-black bg-white text-black dark:text-white p-2 px-4 pt-4 rounded-lg shadow-md">

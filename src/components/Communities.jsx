@@ -25,7 +25,7 @@ const Communities = () => {
         <p className="mt-2 text-gray-600">Join like-minded individuals and make a positive impact.</p>
       </motion.header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
         {communities.map((community) => (
           <motion.div
             key={community.id}
@@ -37,7 +37,7 @@ const Communities = () => {
           >
             <Link
               to={`/community/${community.id}`}
-              className="bg-white rounded-lg p-5 cursor-pointer transition-shadow duration-200"
+              className="bg-white dark:bg-black rounded-lg p-5 cursor-pointer transition-shadow duration-200"
             >
               <h2 className="text-xl font-semibold mb-2">{community.name}</h2>
               <p className="text-gray-600">{community.description}</p>

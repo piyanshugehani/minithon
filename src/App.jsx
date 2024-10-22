@@ -8,10 +8,15 @@ import ThemeToggle from "./components/ThemeToggle";
 import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
 import MapComponent from "./components/MapComponent"; // Import the MapComponent
+import { useUser } from "@clerk/clerk-react";
 
 function App() {
+  const { user} = useUser();
   const [startLocation, setStartLocation] = useState({ lat: "", lng: "" });
   const [endLocation, setEndLocation] = useState({ lat: "", lng: "" });
+
+  // Access the username from the user's profile
+  const username = user?.username || "Buddy";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +36,7 @@ function App() {
         </header>
         <main className="p-4">
           <div className="ml-0 mr-0 md:ml-[15%] md:mr-[2%] lg:ml-[15%] lg:mr-[2%]">
-            <Dashboard />
+            <Dashboard username={username}/>
 
             {/* Add Location Inputs */}
             {/* <form onSubmit={handleSubmit} className="mb-4">
