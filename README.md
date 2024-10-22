@@ -38,12 +38,16 @@ EcoSphere is a sustainability-driven platform designed to encourage and track ec
 
 **Clone the repository: git clone** 
 -https://github.com/your-username/ecosphere.git
+
 **Navigate to the project directory**: 
 -cd ecosphere
+
 **Install the dependencies**: 
 -npm install
+
 **Set up your environment variables:**
 -Create a .env.local file at the root of the project.
+
 **Run the app**: 
 -npm run dev
 
