@@ -56,7 +56,7 @@ const ClerkWithRoutes = () => {
       <Route path="/signin/" element={<Signin/>}/>
       <Route path="/leaderboard/" element={<ProtectedRoute element={<Lead />} />} />
       <Route path='/calendar/' element={<ProtectedRoute element={<Cal />} />} />
-      <Route path='/events/' element={<Events />} />
+      <Route path='/events/' element={<ProtectedRoute element={<Events />} />} />
       <Route path="/community/" element={<ProtectedRoute element={<Com />} />} />
         <Route path="/community/:communityId" element={<ProtectedRoute element={<Dou />} />} />
       <Route path='/maps/' element={<ProtectedRoute element={<Maps />} />} />
