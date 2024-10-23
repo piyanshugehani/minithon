@@ -29,6 +29,7 @@ const projects = [
 ];
 
 const Dashboard = ({ username }) => {
+  localStorage.setItem('theme','dark');
   return (
     <div className="p-4 min-h-screen bg-gray-50 dark:bg-[rgb(0_6_12)] dark:text-white">
       <h2 className="pt-4 text-3xl font-bold mb-6">Morning, {username}!</h2>

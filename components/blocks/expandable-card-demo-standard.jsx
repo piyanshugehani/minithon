@@ -34,17 +34,17 @@ export default function ExpandableCardDemo() {
 
   return (
     <>
-      <div className="bg-white flex justify-center gap-4 mb-4 m-4">
+      <div className="bg-white dark:bg-black flex justify-center gap-4 mb-4 m-4">
         <select
           value={locationFilter}
           onChange={(e) => setLocationFilter(e.target.value)}
-          className="px-4 py-2 border border-gray-300 dark:text-black rounded-md "
+          className="px-4 py-2 border dark:bg-black border-gray-300 dark:text-white rounded-md "
         >
           <option value="">All Locations</option>
           <option value="Thane">Thane</option>
           <option value="Andheri">Andheri</option>
           <option value="Chembur">Chembur</option>
-          <option value="Mulund">Mulund</option>
+          {/* <option value="Mulund">Mulund</option> */}
         </select>
       </div>
 
