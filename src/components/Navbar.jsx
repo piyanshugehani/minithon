@@ -1,8 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { Home, Folder, FileText, BarChart, User, NotebookIcon, Atom, Menu, X } from 'lucide-react';
+import { Home, Folder, FileText, BarChart, NotebookIcon, Atom, Menu, X, User2 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import User from './User';
 
 const Navbar = () => {
   const location = useLocation();
@@ -81,7 +82,7 @@ const Navbar = () => {
 
       <div className="w-[85%] text-black dark:text-white py-2 px-4 rounded-lg transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-700 hover:font-semibold">
         <a href="/" className='flex justify-start items-center'>
-          <span><User className="h-4 w-4 mr-2" /></span>
+          <span><User2 className="h-4 w-4 mr-2" /></span>
           <p className="text-sm font-pop">Account</p>
           
         </a>
@@ -94,11 +95,13 @@ const Navbar = () => {
     <Atom className="h-6 text-black dark:text-white" />
     <h1 className="text-xl font-semibold text-black dark:text-white">EcoSphere</h1>
   </a>
+  
   <div className='flex'>
     <ThemeToggle/>
-  <button onClick={toggleMobileMenu} className="focus:outline-none">
+  <button onClick={toggleMobileMenu} className="focus:outline-none mr-3">
     {isMobileMenuOpen ? <X className="h-6 w-6 text-black dark:text-white" /> : <Menu className="h-6 w-6 text-black dark:text-white" />}
   </button>
+  <User/>
   </div>
 </div>
 
@@ -110,7 +113,7 @@ const Navbar = () => {
     <a href="/calendar" className="text-black dark:text-white hover:font-semibold">Calendar</a>
     <a href="/maps" className="text-black dark:text-white hover:font-semibold">Maps</a>
     <a href="/community" className="text-black dark:text-white hover:font-semibold">Community</a>
-    <a href="/" className="text-black dark:text-white hover:font-semibold">Account</a>
+    {/* <a href="/" className="text-black dark:text-white hover:font-semibold">Account</a> */}
     
   </div>
 )}
