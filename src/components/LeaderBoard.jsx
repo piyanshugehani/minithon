@@ -55,7 +55,7 @@ const Leaderboard = () => {
   const leaderboardData = leaderboardType === 'appWide' ? appWideLeaderboardData : friendsLeaderboardData;
 
   return (
-    <div className="min-h-screen bg-white p-6 md:p-12">
+    <div className="min-h-screen bg-white dark:bg-black p-6 md:p-12">
       {/* Account Info Section */}
       <div className="flex items-center justify-between mb-8">
         
@@ -107,7 +107,7 @@ const Leaderboard = () => {
             </div>
             <DialogFooter className="sm:justify-start">
               <DialogClose asChild>
-                <button type="button" className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+                <button type="button" className="px-4 py-2 bg-gray-300 dark:bg-gray-950 rounded hover:bg-gray-400">
                   Close
                 </button>
               </DialogClose>
@@ -122,7 +122,7 @@ const Leaderboard = () => {
         <div className="flex space-x-4">
           <button
             className={`${
-              leaderboardType === 'appWide' ? 'bg-green-200 text-black' : 'bg-white text-black'
+              leaderboardType === 'appWide' ? 'bg-green-200 dark:bg-green-950 text-black dark:text-white' : 'bg-white text-black'
             } border-2 border-green-600 rounded-lg px-4 py-2 transition hover:bg-green-600 hover:text-white`}
             onClick={() => handleLeaderboardTypeChange('appWide')}
           >
@@ -130,7 +130,7 @@ const Leaderboard = () => {
           </button>
           <button
             className={`${
-              leaderboardType === 'friends' ? 'bg-green-200 text-black' : 'bg-white text-black'
+              leaderboardType === 'friends' ? 'bg-green-200 text-black' : 'bg-white dark:bg-black text-black dark:text-white'
             } border-2 border-green-600 rounded-lg px-4 py-2 transition hover:bg-green-600 hover:text-white`}
             onClick={() => handleLeaderboardTypeChange('friends')}
           >
@@ -168,7 +168,7 @@ const Leaderboard = () => {
             <DialogFooter className="sm:justify-start">
               <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Add Friend</button>
               <DialogClose asChild>
-                <button type="button" className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+                <button type="button" className="px-4 py-2 bg-gray-300 dark:bg-black rounded hover:bg-gray-400">
                   Close
                 </button>
               </DialogClose>
@@ -181,7 +181,7 @@ const Leaderboard = () => {
         {leaderboardData.slice(0, 3).map((player, index) => (
           <div
             key={index}
-            className={`p-6 rounded-lg shadow-md bg-white border ${
+            className={`p-6 rounded-lg shadow-md bg-white dark:bg-black border ${
               player.place === 1 ? 'border-yellow-500' : player.place === 2 ? 'border-gray-500' : 'border-orange-500'
             } hover:shadow-xl transition-shadow`}
           >
@@ -209,9 +209,9 @@ const Leaderboard = () => {
 
       {/* Leaderboard Section */}
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300">
+        <table className="min-w-full bg-white dark:bg-gray-950 border border-gray-300">
           <thead>
-            <tr className="bg-green-100">
+            <tr className="bg-green-100 dark:bg-green-950">
               <th className="py-2 px-4 border">Rank</th>
               <th className="py-2 px-4 border">Name</th>
               <th className="py-2 px-4 border">CO2 Reduction</th>
@@ -223,7 +223,7 @@ const Leaderboard = () => {
             {leaderboardData.map((player) => (
               <tr
                 key={player.place}
-                className="hover:bg-gray-100 cursor-pointer"
+                className="hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
                 onClick={() => setSelectedPlayer(player)} // Set the selected player
               >
                 <td className="py-2 px-4 border text-center">{player.place}</td>

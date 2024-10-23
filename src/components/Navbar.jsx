@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Home, Folder, FileText, BarChart, User, NotebookIcon, Atom, Menu, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const location = useLocation();
@@ -91,11 +92,14 @@ const Navbar = () => {
 <div className="flex justify-between items-center p-4">
   <a href="/" className="flex items-center space-x-2">
     <Atom className="h-6 text-black dark:text-white" />
-    <h1 className="text-xl font-semibold text-black dark:text-white">UrbanSync</h1>
+    <h1 className="text-xl font-semibold text-black dark:text-white">EcoSphere</h1>
   </a>
+  <div className='flex'>
+    <ThemeToggle/>
   <button onClick={toggleMobileMenu} className="focus:outline-none">
     {isMobileMenuOpen ? <X className="h-6 w-6 text-black dark:text-white" /> : <Menu className="h-6 w-6 text-black dark:text-white" />}
   </button>
+  </div>
 </div>
 
 {isMobileMenuOpen && (

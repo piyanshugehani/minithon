@@ -5,6 +5,8 @@ import ThemeToggle from "./ThemeToggle";
 import User from "./User";
 
 function Cal() {
+  localStorage.setItem('theme', 'light');
+  
   const containerRef = useRef(null);
   return (
     <div className="min-h-screen bg-white dark:bg-black text-gray-800 dark:text-gray-200">

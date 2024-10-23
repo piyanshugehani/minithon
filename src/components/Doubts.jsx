@@ -39,7 +39,7 @@ const Doubts = () => {
         {doubts.map((doubt, index) => (
           <motion.div
             key={doubt.id}
-            className="bg-white p-6 rounded-lg shadow-md"
+            className="bg-white dark:bg-gray-950 p-6 rounded-lg shadow-md"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.5 }} // Sequential delay for each question
@@ -56,7 +56,7 @@ const Doubts = () => {
               {doubt.replies.map((reply, idx) => (
                 <motion.p
                   key={idx}
-                  className="text-gray-600 bg-gray-100 p-3 rounded-lg"
+                  className="text-gray-600 dark:text-white bg-gray-100 dark:bg-gray-700 p-3 rounded-lg"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.5 + index * 0.5 + idx * 0.2 }} // Staggered delay for replies
