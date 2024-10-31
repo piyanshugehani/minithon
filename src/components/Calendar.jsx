@@ -145,6 +145,7 @@ const CalendarComponent = () => {
 
   return (
     <>
+      <div className="h-[100vh]">
       <Calendar
         events={events}
         defaultView={"month"}
@@ -263,6 +264,7 @@ const CalendarComponent = () => {
           </div>
         </DialogContent>
       </Dialog>
+      </div>
     </>
   );
 };

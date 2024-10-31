@@ -10,6 +10,7 @@ import LineChart from "./LineChart";
 import PieChart from "./PieChart";
 import { BadgePercentIcon } from "lucide-react";
 import WorldGlobe from "./WorldGlobe";
+import { useOutletContext } from "react-router-dom";
 
 const DashboardCard = ({ title, value, icon }) => (
   <div className="dark:bg-black bg-white text-black dark:text-white p-2 px-4 pt-4 rounded-lg shadow-md flex items-center">
@@ -28,8 +29,11 @@ const projects = [
   { name: "Ashley Frenandes", progress: 90 },
 ];
 
-const Dashboard = ({ username }) => {
+const Dashboard = () => {
   localStorage.setItem('theme','dark');
+  const { username } = useOutletContext(); 
+  
+
   return (
     <div className="p-4 min-h-screen bg-gray-50 dark:bg-[rgb(0_6_12)] dark:text-white">
       <h2 className="pt-4 text-3xl font-bold mb-6">Morning, {username}!</h2>

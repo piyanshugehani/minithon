@@ -7,7 +7,7 @@ import Navbar from './Navbar';
 mapboxgl.accessToken = 'pk.eyJ1IjoidGFudmlwNzk5OTkiLCJhIjoiY20yaDlicmRnMDQ2ajJpcXh1MXd1NGF0ayJ9.N8cWurKQsFuHf5bTnlIKSw';
 
 const MapComponent = () => {
-  localStorage.setItem('theme', 'light');
+  // localStorage.setItem('theme', 'light');
   const mapContainerRef = useRef(null);
   const [startLocation, setStartLocation] = useState({ lat: null, lng: null });
   const [endLocation, setEndLocation] = useState({ lat: null, lng: null });
@@ -116,8 +116,6 @@ const MapComponent = () => {
   };
 
   return (
-    <div>
-<Navbar/>
 <div className="map-container">
       <h1 className="map-header">Find the Greenest Route to Save CO2!</h1>
       <form onSubmit={handleSubmit} className="location-form">
@@ -146,8 +144,6 @@ const MapComponent = () => {
         </div>
       )}
     </div>
-    </div>
-    
   );
 };
 
