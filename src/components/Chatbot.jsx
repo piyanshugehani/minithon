@@ -10,9 +10,7 @@ const Chatbot = () => {
 
 const isLocal = window.location.hostname === 'localhost';
 
-const apiHost = isLocal
-    ? "http://localhost:3000"
-    : "https://minithon-ecosphere.vercel.app";
+const apiHost = "http://localhost:3000"
 
 Chatbot.init({
     chatflowid: "e1674df2-33a0-435f-9438-62d1a2685e1c",
