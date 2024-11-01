@@ -8,9 +8,15 @@ const Chatbot = () => {
         script.text = `
             import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
 
+const isLocal = window.location.hostname === 'localhost';
+
+const apiHost = isLocal
+    ? "http://localhost:3000"
+    : "https://minithon-ecosphere.vercel.app";
+
 Chatbot.init({
     chatflowid: "e1674df2-33a0-435f-9438-62d1a2685e1c",
-    apiHost: "http://localhost:3000",
+    apiHost: apiHost,
     chatflowConfig: {
         // topK: 2
     },
