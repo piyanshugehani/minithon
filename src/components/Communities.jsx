@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Chatbot from './Chatbot';
 
 const Communities = () => {
   // Environment-related community data
@@ -11,6 +12,25 @@ const Communities = () => {
     { id: 4, name: 'Renewable Energy', description: 'Exploring solar, wind, and other renewable energy sources.' },
     { id: 5, name: 'Clean Oceans', description: 'Discussion on saving marine ecosystems and reducing plastic waste.' },
   ];
+
+  async function query(data) {
+    const response = await fetch(
+        "http://localhost:3000/api/v1/prediction/e1674df2-33a0-435f-9438-62d1a2685e1c",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+    );
+    const result = await response.json();
+    return result;
+}
+
+query({"question": "Hey, you're a chatbot (temporarily named Ecosphere's own chatbot) designed for suggesting eco friendly practices to our users, so lets start. how are you?"}).then((response) => {
+    console.log(response);
+});
 
   return (
     <div className="min-h-screen p-6">
@@ -45,6 +65,7 @@ const Communities = () => {
           </motion.div>
         ))}
       </div>
+      <Chatbot/>
     </div>
   );
 };

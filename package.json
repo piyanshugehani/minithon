@@ -19,6 +19,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
+    "flowise-embed-react": "^1.0.6",
     "framer-motion": "^11.11.9",
     "lucide-react": "^0.453.0",
     "mapbox-gl": "^3.7.0",
