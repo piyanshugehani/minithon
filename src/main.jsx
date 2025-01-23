@@ -23,6 +23,8 @@ import CalendarComponent from './components/Calendar';
 import Eventcomp from './components/Eventcomp';
 import Communities from './components/Communities';
 import Doubts from './components/Doubts';
+import Parallax from './components/Parallax';
+import Landing from './components/Landing';
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -83,6 +85,7 @@ const ClerkWithRoutes = () => (
   <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
     <Routes>
       {/* Routes without Layout */}
+      <Route path="landing" element={<Landing />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
 
@@ -96,6 +99,7 @@ const ClerkWithRoutes = () => (
           <Route path="community" element={<Communities />} />
           <Route path="community/:communityId" element={<Doubts />} />
           <Route path="maps" element={<Maps />} />
+          
         </Route>
       </Route>
     </Routes>
